@@ -1,6 +1,7 @@
 package com.qa.opencart.tests;
 
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -77,42 +78,38 @@ public class HomePageTest {
 		hm.submitBtn();
 		String dashboadTxt = hm.Errormessage();
 		Assert.assertEquals(dashboadTxt, "Required");
-		
 
 	}
-	
-	
+
 	@Test
 	public void verify_Login_with_Wrong_Cradancial2() {
 		hm = new HomePage(page);
 		hm.submitBtn();
 		String dashboadTxt = hm.Errormessage();
+		Reporter.log("actual result" + dashboadTxt);
 		Assert.assertEquals(dashboadTxt, "Required");
-		
 
 	}
-	
-	
+
 	@Test
 	public void verify_Login_with_Wrong_Cradancial1() {
 		hm = new HomePage(page);
 		hm.placeholder_Username_inputField();
 		hm.submitBtn();
 		String dashboadTxt = hm.Errormessage();
+		Reporter.log("actual result" + dashboadTxt + "acpected => " + "Required");
 		Assert.assertEquals(dashboadTxt, "Required");
-		
 
 	}
-	
-	
-	
 
 	@Test
 	public void verify_Loginpage_placeholders() {
 		hm = new HomePage(page);
 		String actualUsernametxt = hm.Username_txt();
+		Reporter.log("actual result" + actualUsernametxt + "acpected => " + "Username");
 		Assert.assertEquals(actualUsernametxt, "Username");
 		String Passwordtxt = hm.Password_txt();
+		Reporter.log("actual result" + Passwordtxt + "acpected => " + "Password");
 		Assert.assertEquals(Passwordtxt, "Password");
 
 	}
@@ -121,16 +118,29 @@ public class HomePageTest {
 	public void verify_Login_page() {
 		hm = new HomePage(page);
 		String currentUrl = hm.getHomePageURL();
+		Reporter.log("actual result" + currentUrl + "acpected => "
+				+ "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 		Assert.assertEquals(currentUrl, "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 		String actualTitle = hm.getHomePageTitle();
+		Reporter.log("actual result" + actualTitle + "acpected => " + "OrangeHRM");
+
 		Assert.assertEquals(actualTitle, "OrangeHRM");
+
 		String actualTxt = hm.Login_txt();
+		Reporter.log("actual result" + actualTxt + "acpected => " + "Login");
+
 		Assert.assertEquals(actualTxt, "Login");
 		String actualUsernameTxt = hm.Username_Admin_txt();
+		Reporter.log("actual result" + actualUsernameTxt + "acpected => " + "Username : Admin");
+
 		Assert.assertEquals(actualUsernameTxt, "Username : Admin");
 		String actualPasswordTxt = hm.Password_admin123_txt();
+		Reporter.log("actual result" + actualPasswordTxt + "acpected => " + "Password : admin123");
+
 		Assert.assertEquals(actualPasswordTxt, "Password : admin123");
 		String actualforgetpasswordTxtTxt = hm.forgetpasswordTxt();
+		Reporter.log("actual result" + actualforgetpasswordTxtTxt + "acpected => " + "Forgot your password? ");
+
 		Assert.assertEquals(actualforgetpasswordTxtTxt, "Forgot your password? ");
 	}
 
