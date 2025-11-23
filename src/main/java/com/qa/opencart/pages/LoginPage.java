@@ -1,44 +1,53 @@
 package com.qa.opencart.pages;
 
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+
+import propertyfile.propertyfile;
 
 public class LoginPage {
 
-	private Page page;
+	private final Page page;
+	public propertyfile pl;
+	propertyfile props = new propertyfile("src/test/resources/config/config.properties");
+    
+    	String Login_txt = "//h5[text()='Login']";
+    	String usernameInput = "//input[@name='email']";
+    	String passwordInput = "//input[@name='password']";
+    	String submitButton =  "//input[@type='submit']";
+    	
+    	
+    	public LoginPage(Page page) {
 
-	// 1. String Locators - OR
-	private String emailId = "//input[@id='input-email']";
-	private String password = "//input[@id='input-password']";
-	private String loginBtn = "//input[@value='Login']";
-	private String forgotPwdLink = "//div[@class='form-group']//a[normalize-space()='Forgotten Password']";
-	private String logoutLink = "//a[@class='list-group-item'][normalize-space()='Logout']";
+    		this.page = page;
 
-	// 2. page constructor:
-	public LoginPage(Page page) {
-		this.page = page;
-	}
+    	}
+    	
+    	
+    	public void placeholder_Username_inputField() {
+
+    		page.fill(usernameInput, props.getProperty("username"));
+
+    	}
+
+    	public void placeholder_Password_inputField() {
+
+    		page.fill(passwordInput, props.getProperty("password"));
+
+    	}
+    	
+    	public void submitBtn() {
+    		page.click(submitButton);
+
+    	}
+
+    
+    
 	
-	// 3. page actions/methods:
-	public String getLoginPageTitle() {
-		return page.title();
-	}
-	
-	public boolean isForgotPwdLinkExist() {
-		return page.isVisible(forgotPwdLink);
-	}
-	
-	public boolean doLogin(String appUserName, String appPassword) {
-		System.out.println("App creds: " + appUserName + ":" + appPassword);
-		page.fill(emailId, appUserName);
-		page.fill(password, appPassword);
-		page.click(loginBtn);
-		page.locator(logoutLink).waitFor();
-		if(page.locator(logoutLink).isVisible()) {
-			System.out.println("user is logged in successfully....");
-			return true;
-		}else {
-			System.out.println("user is not logged in successfully....");
-			return false;
-		}
-	}
+    
+    
+    
+    
 }
+
+   
