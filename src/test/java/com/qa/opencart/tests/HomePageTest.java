@@ -25,7 +25,7 @@ public class HomePageTest {
 	@BeforeMethod()
 	public void initBrowser() {
 		bs = new PlaywrightFactory();
-		page = bs.initBrowser("chromium", "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+		page = bs.initBrowser("firefox", "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 
 	}
 

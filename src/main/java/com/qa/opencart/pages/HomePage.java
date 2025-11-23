@@ -7,11 +7,10 @@ public class HomePage {
 
 	private final Page page;
 	public propertyfile pl;
-	propertyfile props = new propertyfile(
-			"E:\\playwrite\\Playwright-Java-PageObjectModel-master\\src\\test\\resources\\config\\config.properties");
+	propertyfile props = new propertyfile("src/test/resources/config/config.properties");
+	
 
 	// 1. String Locators - OR
-
 	private String Login_txt = "//h5[text()='Login']";
 
 	private String Username_Admin_txt = "//p[text()='Username : Admin']";

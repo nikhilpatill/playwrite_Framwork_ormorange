@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.microsoft.playwright.ElementHandle;
+import com.microsoft.playwright.Frame;
 import com.microsoft.playwright.FrameLocator;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -47,6 +48,17 @@ public class GenericMethod {
 
 		return null;
 	}
+	
+	
+	 public static Frame switchToFrameById(Page page, String frameId) {
+	        for (Frame frame : page.frames()) {
+	            if (frame.name().equals(frameId)) {
+	                System.out.println("Switched to frame: " + frameId);
+	                return frame;
+	            }
+	        }
+	        return null;
+	    }
 
 	// end
 
