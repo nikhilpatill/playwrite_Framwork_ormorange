@@ -7,7 +7,7 @@
 </listeners>  
 	<test thread-count="5" name="Test">
 		<classes>
-			<class name="com.qa.opencart.tests.HomePageTest">
+			<class name="com.qa.opencart.tests.loginpage_Test">
 			
 			</class>
 		</classes>
